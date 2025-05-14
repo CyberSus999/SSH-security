@@ -1,0 +1,22 @@
+FAIL2BAN
+--An intrusion prevention system written in python
+--protection against brute-force attacks
+--Allows strength and frequency monitoring of attacks
+--can block ip addresses
+sudo apt-get install -y fail2ban
+systemctl enable fail2ban.service
+ls -al /etc/fail2ban/
+--a jail is a conf file that contains filters or arguments that protect the syatem
+nano jail.local
+  [sshd]
+  enabled = true
+  port = ssh
+  filter = sshd
+  logpath = /var/log/auth.log
+  maxretry = 3
+  bantime = 3600
+  ignoreip = <ip address>
+--view failed attempts
+fail2ban-client status sshd
+
+  
