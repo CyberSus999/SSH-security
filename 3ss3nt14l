@@ -1,0 +1,25 @@
+DISABLE SSH TO USER AUTH
+--add a user 
+useradd -m -s /bin/bash <user>
+
+EDIT SSH CONF
+nano /etc/ssh/sshd_config
+PermitRootLogin No
+
+GENERATE SSHKEY
+
+ssh-keygen -t rsa 
+ssh-copy-id <user>@<server>
+
+DISABLE PASSWORD LOGIN
+PasswordAuthentication no
+
+EDIT SUDO ACCESS
+
+sudo visudo
+--add the user to sudo group
+
+DISABLE ROOT LOGIN
+--set to nologin shell
+sudo chsh root 
+  /sbin/nologin
